@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="TaskFlow — A highly polished, professional, and responsive vanilla JavaScript Todo application." />
+  <title>TaskFlow — Professional Task Manager</title>
+  <!-- Google Fonts for modern typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Application Stylesheet -->
+  <link rel="stylesheet" href="src/style.css" />
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header Section with Branding and Progress Tracking -->
+    <header class="app-header">
+      <div class="brand-container">
+        <div class="logo-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path>
+            <path d="m9 12 2 2 4-4"></path>
+          </svg>
+        </div>
+        <div>
+          <h1>TaskFlow</h1>
+          <p class="subtitle">Manage your daily workflow with precision</p>
+        </div>
+      </div>
+
+      <!-- Progress Tracker Card -->
+      <div class="progress-card" aria-live="polite">
+        <div class="progress-info">
+          <span class="progress-label">Task Completion</span>
+          <span id="progress-percent" class="progress-percent">0%</span>
+        </div>
+        <div class="progress-bar-container">
+          <div id="progress-bar-fill" class="progress-bar-fill" style="width: 0%"></div>
+        </div>
+        <p id="progress-summary" class="progress-summary">0 of 0 tasks completed</p>
+      </div>
+    </header>
+
+    <!-- Main Application Workspace -->
+    <main class="app-main">
+      <!-- Task Creation Form -->
+      <section class="task-creation-section" aria-label="Create a new task">
+        <form id="todo-form" class="todo-form" autocomplete="off">
+          <div class="input-group">
+            <input 
+              type="text" 
+              id="todo-input" 
+              class="todo-input" 
+              placeholder="What needs to be done today?" 
+              required 
+              aria-label="New task description" 
+            />
+            <button type="submit" class="btn-primary" aria-label="Add task">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+              <span>Add Task</span>
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <!-- Task Controls and Filters -->
+      <section class="task-controls-section" aria-label="Task filters and actions">
+        <div class="controls-bar">
+          <div class="filters-group" role="group" aria-label="Filter tasks">
+            <button type="button" class="filter-btn active" data-filter="all" aria-pressed="true">
+              All <span class="badge" id="count-all">0</span>
+            </button>
+            <button type="button" class="filter-btn" data-filter="active" aria-pressed="false">
+              Active <span class="badge" id="count-active">0</span>
+            </button>
+            <button type="button" class="filter-btn" data-filter="completed" aria-pressed="false">
+              Completed <span class="badge" id="count-completed">0</span>
+            </button>
+          </div>
+          <button type="button" id="clear-completed-btn" class="btn-text" aria-label="Clear all completed tasks">
+            Clear Completed
+          </button>
+        </div>
+      </section>
+
+      <!-- Task List Container -->
+      <section class="task-list-section" aria-label="Task list">
+        <ul id="todo-list" class="todo-list" role="list">
+          <!-- Dynamic task items will be injected here by app.js -->
+        </ul>
+
+        <!-- Empty State Placeholder -->
+        <div id="empty-state" class="empty-state" hidden>
+          <div class="empty-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+              <path d="m9 16 2 2 4-4"></path>
+            </svg>
+          </div>
+          <h3 class="empty-title">All caught up!</h3>
+          <p class="empty-subtitle">No tasks match your current filter. Enjoy your day!</p>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="app-footer">
+      <p>TaskFlow &copy; 2025. Built with semantic HTML5, CSS3, and Vanilla JavaScript.</p>
+    </footer>
+  </div>
+
+  <!-- Application Script Entry Point -->
+  <script type="module" src="src/app.js"></script>
+</body>
+</html>
